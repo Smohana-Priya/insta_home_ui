@@ -236,13 +236,13 @@
       "languageVersion": "2.19"
     },
     {
-      "name": "insta_home_ui",
+      "name": "instagram",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     }
   ],
-  "generated": "2024-05-21T14:33:38.604351Z",
+  "generated": "2024-05-21T14:49:59.870158Z",
   "generator": "pub",
   "generatorVersion": "3.4.0",
   "flutterRoot": "file:///Users/mohanapriya/Documents/flutter",

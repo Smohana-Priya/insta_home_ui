@@ -20,18 +20,12 @@ class StoryWidget extends StatelessWidget {
           height: 70,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            gradient: isNew
-                ? const LinearGradient(
-                    colors: [Colors.red, Colors.orange, Colors.yellow],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                  )
-                : null,
-            border: isNew
-                ? null
-                : Border.all(
-                    color: const Color.fromARGB(255, 201, 198, 198),
-                    width: 3.5),
+            color: Colors.white,
+            border: Border.all(
+                color: isNew
+                    ? Colors.red
+                    : const Color.fromARGB(255, 201, 198, 198),
+                width: 3.5),
           ),
           child: Padding(
             padding: const EdgeInsets.all(3.0),

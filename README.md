@@ -1,16 +1,4 @@
 # insta_home_ui
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img width="438" alt="Screenshot 2024-05-22 at 3 25 39 PM" src="https://github.com/Smohana-Priya/insta_home_ui/assets/100066754/576beabd-ae4a-4360-8f59-e94374ca3093">
+<img width="477" alt="Screenshot 2024-05-22 at 3 26 05 PM" src="https://github.com/Smohana-Priya/insta_home_ui/assets/100066754/10073cc6-c035-490f-9f37-05c1f25cef58">

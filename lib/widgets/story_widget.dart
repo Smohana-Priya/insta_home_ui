@@ -16,8 +16,8 @@ class StoryWidget extends StatelessWidget {
     return Column(
       children: [
         Container(
-          width: 70,
-          height: 70,
+          width: 74,
+          height: 74,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: Colors.white,
@@ -25,7 +25,7 @@ class StoryWidget extends StatelessWidget {
                 color: isNew
                     ? Colors.red
                     : const Color.fromARGB(255, 201, 198, 198),
-                width: 3.5),
+                width: 3),
           ),
           child: Padding(
             padding: const EdgeInsets.all(3.0),

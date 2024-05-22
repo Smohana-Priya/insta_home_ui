@@ -24,73 +24,106 @@ class _HomeState extends State<Home> {
     {'img': ImagePaths.profile, 'username': Constants.user1, 'isNew': true},
     {'img': ImagePaths.profile, 'username': Constants.user1, 'isNew': true},
   ];
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: const Row(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Text(
-                'Instagram',
-                style: TextStyle(
-                    fontFamily: 'Billabong',
-                    fontSize: 30,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold),
-              ),
-              Icon(Icons.keyboard_arrow_down_outlined)
-            ],
-          ),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 20),
-              child: Row(
+        /// I used this CustomScrollView to show the app bar when scrolling up and hide it when scrolling down.
+        body: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              title: const Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Image.asset(ImagePaths.like),
-                  const SizedBox(
-                    width: 20,
+                  Text(
+                    'Instagram',
+                    style: TextStyle(
+                        fontFamily: 'Billabong',
+                        fontSize: 30,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold),
                   ),
-                  Image.asset(ImagePaths.msg)
+                  Icon(Icons.keyboard_arrow_down_outlined)
+                  // DropdownButton<String>(
+                  //   icon: const Icon(Icons.keyboard_arrow_down_outlined),
+                  //   underline: Container(),
+                  //   onChanged: (String? newValue) {
+                  //     setState(() {
+                  //       // selectedItem = newValue!;
+                  //     });
+                  //   },
+                  //   items: <String>['Option 1', 'Option 2', 'Option 3']
+                  //       .map<DropdownMenuItem<String>>((String value) {
+                  //     return DropdownMenuItem<String>(
+                  //       value: value,
+                  //       child: Text(value),
+                  //     );
+                  //   }).toList(),
+                  //   isDense: true,
+                  //   dropdownColor: Colors.white,
+                  //   style: const TextStyle(
+                  //     color: Colors.black,
+                  //     fontSize: 16,
+                  //   ),
+                  //   iconSize: 20, // Adjust icon size if necessary
+                  //   itemHeight: null,
+                  //   padding: EdgeInsets.only(left: 0, right: 0),
+                  // ),
+                ],
+              ),
+              actions: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 20),
+                  child: Row(
+                    children: [
+                      Image.asset(ImagePaths.unlike),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      Image.asset(ImagePaths.msg)
+                    ],
+                  ),
+                ),
+              ],
+              floating: true,
+              snap: true,
+            ),
+            SliverToBoxAdapter(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  /// story section
+                  SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: stories.map((story) {
+                          return Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 8.0),
+                            child: StoryWidget(
+                              img: story['img']!,
+                              username: story['username']!,
+                              isNew: story['isNew']!,
+                            ),
+                          );
+                        }).toList(),
+                      )),
+                  const Divider(
+                    thickness: 0.5,
+                  ),
                 ],
               ),
             ),
-          ],
-        ),
-        body: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              /// story section
-              SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: stories.map((story) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: StoryWidget(
-                          img: story['img']!,
-                          username: story['username']!,
-                          isNew: story['isNew']!,
-                        ),
-                      );
-                    }).toList(),
-                  )),
-              const Divider(
-                thickness: 0.5,
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (BuildContext context, int index) {
+                  return const PostWidget();
+                },
+                childCount: 5,
               ),
-
-              /// post section
-              ListView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: 5,
-                  itemBuilder: (context, index) {
-                    return const PostWidget();
-                  })
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:instagram/utils/img_paths.dart';
+import 'package:intl/intl.dart';
+import 'package:readmore/readmore.dart';
 
 class PostWidget extends StatefulWidget {
-  const PostWidget({super.key});
+  const PostWidget({
+    super.key,
+  });
 
   @override
   State<PostWidget> createState() => _PostWidgetState();
 }
 
 class _PostWidgetState extends State<PostWidget> {
+  int likeCount = 3264;
+  bool isLiked = false;
+  String get formattedLikeCount {
+    return NumberFormat('#,##0').format(likeCount);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -38,7 +48,22 @@ class _PostWidgetState extends State<PostWidget> {
             children: [
               Row(
                 children: [
-                  Image.asset(ImagePaths.like),
+                  InkWell(
+                    onTap: () {
+                      setState(() {
+                        if (isLiked) {
+                          likeCount--;
+                        } else {
+                          likeCount++;
+                        }
+                        isLiked = !isLiked;
+                      });
+                    },
+                    // child:
+                    //     Icon(isLiked ? Icons.favorite : Icons.favorite_border),
+                    child: Image.asset(
+                        isLiked ? ImagePaths.like : ImagePaths.unlike),
+                  ),
                   const SizedBox(
                     width: 7,
                   ),
@@ -66,38 +91,41 @@ class _PostWidgetState extends State<PostWidget> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            '3,264 likes',
-            style: TextStyle(
+          Text(
+            formattedLikeCount,
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 16.0,
             ),
           ),
-          const SizedBox(height: 8.0),
-          RichText(
-            text: const TextSpan(
-              children: <TextSpan>[
-                TextSpan(
-                  text: 'knowledgedays ',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
-                ),
-                TextSpan(
-                  text:
-                      'He Got Bail After Writing 300 Words Essay On Road Accident ... ',
-                  style: TextStyle(
-                    color: Colors.black,
-                  ),
-                ),
-                TextSpan(
-                  text: 'more',
-                  style: TextStyle(
-                    color: Colors.grey,
-                  ),
-                ),
-              ],
+          const SizedBox(height: 3.0),
+          const ReadMoreText(
+            'He Got Bail AftBail After Writing 300 Words Essay On Road Accident He Got Bail After Writing 300 Words Essay On Road Accident He Got Bail After Writing 300 Words Essay On Road Accident He Got Bail After Writing 300 Words Essay On Road Accident',
+            style: TextStyle(
+                fontSize: 12,
+                fontFamily: "Quicksand",
+                // color: AppColors.black,
+                fontWeight: FontWeight.w500),
+            trimMode: TrimMode.Line,
+            trimLines: 1,
+            colorClickableText: Colors.red,
+            trimCollapsedText: ' view more',
+            trimExpandedText: ' view less',
+            lessStyle: TextStyle(
+              fontSize: 12,
+              fontFamily: "Quicksand",
+              fontWeight: FontWeight.w700,
+              // color: AppColors.primaryColor,
+              decoration: TextDecoration.underline,
+              // decorationColor: AppColors.primaryColor,
+            ),
+            moreStyle: TextStyle(
+              fontSize: 12,
+              fontFamily: "Quicksand",
+              fontWeight: FontWeight.w700,
+              // color: AppColors.primaryColor,
+              decoration: TextDecoration.underline,
+              // decorationColor: AppColors.primaryColor,
             ),
           ),
           const SizedBox(height: 8.0),

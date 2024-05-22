@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="insta_home_ui"
+        android:label="Instagram"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

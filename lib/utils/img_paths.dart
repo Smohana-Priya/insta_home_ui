@@ -9,4 +9,7 @@ class ImagePaths {
   static const String save = 'assets/images/save.png';
   static const String myProfile = 'assets/images/my_profile.jpeg';
   static const String addIcon = 'assets/images/add_icon.png';
+  static const String dogPost = 'assets/images/dog_post.jpeg';
+  static const String dog = 'assets/images/dog.png';
+  static const String sri = 'assets/images/sri.jpeg';
 }

@@ -27,8 +27,8 @@ class _HomeState extends State<Home> {
                   Text(
                     'Instagram',
                     style: TextStyle(
-                        fontFamily: 'Billabong',
-                        fontSize: 30,
+                        // fontFamily: 'Billabong',
+                        fontSize: 20,
                         color: Colors.black,
                         fontWeight: FontWeight.bold),
                   ),
@@ -113,7 +113,7 @@ class _HomeState extends State<Home> {
                 (BuildContext context, int index) {
                   return const PostWidget();
                 },
-                childCount: 5,
+                childCount: 3,
               ),
             ),
           ],

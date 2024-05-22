@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagram/utils/constants.dart';
 import 'package:instagram/utils/img_paths.dart';
 
 import '../data/more_items.dart';
@@ -44,7 +45,7 @@ class MoreItem extends StatelessWidget {
                   height: 5,
                 ),
                 const Text(
-                  'Save',
+                  Constants.save,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 )
               ],
@@ -61,7 +62,7 @@ class MoreItem extends StatelessWidget {
                   height: 5,
                 ),
                 const Text(
-                  'Remix',
+                  Constants.remix,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 )
               ],
@@ -78,7 +79,7 @@ class MoreItem extends StatelessWidget {
                   height: 5,
                 ),
                 const Text(
-                  'QR code',
+                  Constants.qrCode,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 )
               ],

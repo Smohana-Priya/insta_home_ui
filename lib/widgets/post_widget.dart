@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagram/utils/constants.dart';
 import 'package:instagram/utils/img_paths.dart';
 import 'package:instagram/widgets/more_items.dart';
 import 'package:intl/intl.dart';
@@ -29,13 +30,35 @@ class _PostWidgetState extends State<PostWidget> {
           padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10),
           child: Row(
             children: [
-              const CircleAvatar(
-                backgroundImage: AssetImage(ImagePaths.profile),
+              Container(
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.red, width: 2.5),
+                    borderRadius: BorderRadius.circular(30)),
+                child: const CircleAvatar(
+                  backgroundImage: AssetImage(ImagePaths.dog),
+                ),
               ),
-              const SizedBox(width: 8),
-              const Text('puthiyathalaimurai',
-                  style: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.bold)),
+              const SizedBox(width: 15),
+              const Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(Constants.dog,
+                      style: TextStyle(
+                          color: Colors.black, fontWeight: FontWeight.bold)),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.music_note,
+                        size: 15,
+                      ),
+                      Text(
+                        Constants.music,
+                        style: TextStyle(fontSize: 12),
+                      ),
+                    ],
+                  )
+                ],
+              ),
               const Spacer(),
               InkWell(
                   onTap: () {
@@ -50,7 +73,7 @@ class _PostWidgetState extends State<PostWidget> {
           ),
         ),
         Image.asset(
-          'assets/images/dogs.png',
+          ImagePaths.dogPost,
           fit: BoxFit.fill,
         ),
         Padding(
@@ -71,17 +94,15 @@ class _PostWidgetState extends State<PostWidget> {
                         isLiked = !isLiked;
                       });
                     },
-                    // child:
-                    //     Icon(isLiked ? Icons.favorite : Icons.favorite_border),
                     child: Image.asset(
                         isLiked ? ImagePaths.like : ImagePaths.unlike),
                   ),
                   const SizedBox(
-                    width: 7,
+                    width: 10,
                   ),
                   Image.asset(ImagePaths.comment),
                   const SizedBox(
-                    width: 7,
+                    width: 10,
                   ),
                   Image.asset(ImagePaths.share),
                 ],
@@ -106,54 +127,41 @@ class _PostWidgetState extends State<PostWidget> {
           Text(
             formattedLikeCount,
             style: const TextStyle(
-              fontWeight: FontWeight.bold,
               fontSize: 16.0,
             ),
           ),
           const SizedBox(height: 3.0),
           const ReadMoreText(
-            'He Got Bail AftBail After Writing 300 Words Essay On Road Accident He Got Bail After Writing 300 Words Essay On Road Accident He Got Bail After Writing 300 Words Essay On Road Accident He Got Bail After Writing 300 Words Essay On Road Accident',
-            style: TextStyle(
-                fontSize: 12,
-                fontFamily: "Quicksand",
-                // color: AppColors.black,
-                fontWeight: FontWeight.w500),
+            Constants.content,
+            style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
             trimMode: TrimMode.Line,
             trimLines: 1,
             colorClickableText: Colors.red,
             trimCollapsedText: ' view more',
             trimExpandedText: ' view less',
             lessStyle: TextStyle(
-              fontSize: 12,
-              fontFamily: "Quicksand",
-              fontWeight: FontWeight.w700,
-              // color: AppColors.primaryColor,
-              decoration: TextDecoration.underline,
-              // decorationColor: AppColors.primaryColor,
-            ),
+                decoration: TextDecoration.underline,
+                fontSize: 12,
+                decorationColor: Colors.black),
             moreStyle: TextStyle(
-              fontSize: 12,
-              fontFamily: "Quicksand",
-              fontWeight: FontWeight.w700,
-              // color: AppColors.primaryColor,
               decoration: TextDecoration.underline,
-              // decorationColor: AppColors.primaryColor,
+              decorationColor: Colors.black,
+              fontSize: 12,
             ),
           ),
-          const SizedBox(height: 8.0),
+          const SizedBox(
+            height: 5,
+          ),
           const Text(
-            'View all 75 comments',
+            Constants.viewAll,
             style: TextStyle(
               color: Colors.grey,
             ),
           ),
-          const SizedBox(height: 8.0),
           const TextField(
               decoration: InputDecoration(
-            hintText: 'Add a comment...',
-            hintStyle: TextStyle(
-              color: Colors.grey,
-            ),
+            hintText: Constants.addCmnt,
+            hintStyle: TextStyle(color: Colors.grey, fontSize: 14),
             enabledBorder: UnderlineInputBorder(
               borderSide: BorderSide(color: Colors.grey, width: 0.5),
             ),

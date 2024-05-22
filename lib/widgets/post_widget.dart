@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instagram/utils/img_paths.dart';
+import 'package:instagram/widgets/more_items.dart';
 import 'package:intl/intl.dart';
 import 'package:readmore/readmore.dart';
 
@@ -24,23 +25,34 @@ class _PostWidgetState extends State<PostWidget> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10),
           child: Row(
             children: [
-              CircleAvatar(
+              const CircleAvatar(
                 backgroundImage: AssetImage(ImagePaths.profile),
               ),
-              SizedBox(width: 8),
-              Text('puthiyathalaimurai',
+              const SizedBox(width: 8),
+              const Text('puthiyathalaimurai',
                   style: TextStyle(
                       color: Colors.black, fontWeight: FontWeight.bold)),
-              Spacer(),
-              Icon(Icons.more_vert, color: Colors.black),
+              const Spacer(),
+              InkWell(
+                  onTap: () {
+                    showModalBottomSheet(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return const MoreItem();
+                        });
+                  },
+                  child: const Icon(Icons.more_vert, color: Colors.black)),
             ],
           ),
         ),
-        Image.asset('assets/images/dogs.png'),
+        Image.asset(
+          'assets/images/dogs.png',
+          fit: BoxFit.fill,
+        ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10),
           child: Row(

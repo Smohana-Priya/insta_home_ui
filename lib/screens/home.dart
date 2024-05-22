@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:instagram/utils/constants.dart';
 import 'package:instagram/utils/img_paths.dart';
 
+import '../data/story_items.dart';
 import '../widgets/post_widget.dart';
 import '../widgets/story_widget.dart';
 
@@ -13,18 +13,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final List<Map<String, dynamic>> stories = [
-    {'img': ImagePaths.like, 'username': Constants.user1, 'isNew': false},
-    {'img': ImagePaths.logo, 'username': Constants.user1, 'isNew': false},
-    {'img': ImagePaths.profile, 'username': Constants.user1, 'isNew': true},
-    {'img': ImagePaths.profile, 'username': Constants.user1, 'isNew': true},
-    {'img': ImagePaths.profile, 'username': Constants.user1, 'isNew': true},
-    {'img': ImagePaths.profile, 'username': Constants.user1, 'isNew': true},
-    {'img': ImagePaths.profile, 'username': Constants.user1, 'isNew': true},
-    {'img': ImagePaths.profile, 'username': Constants.user1, 'isNew': true},
-    {'img': ImagePaths.profile, 'username': Constants.user1, 'isNew': true},
-  ];
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -93,6 +81,10 @@ class _HomeState extends State<Home> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  const SizedBox(
+                    height: 10,
+                  ),
+
                   /// story section
                   SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
@@ -104,13 +96,14 @@ class _HomeState extends State<Home> {
                             child: StoryWidget(
                               img: story['img']!,
                               username: story['username']!,
-                              isNew: story['isNew']!,
+                              isNew: story['isNew'],
+                              isYourStory: story['isYourStory'],
                             ),
                           );
                         }).toList(),
                       )),
                   const Divider(
-                    thickness: 0.5,
+                    thickness: 0.2,
                   ),
                 ],
               ),

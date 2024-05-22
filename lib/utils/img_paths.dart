@@ -7,4 +7,6 @@ class ImagePaths {
   static const String comment = 'assets/images/comment.png';
   static const String share = 'assets/images/share.png';
   static const String save = 'assets/images/save.png';
+  static const String myProfile = 'assets/images/my_profile.jpeg';
+  static const String addIcon = 'assets/images/add_icon.png';
 }
